@@ -147,11 +147,11 @@ curl -X POST http://localhost:8080/scroll \
 Credentials are encrypted at rest using Fernet symmetric encryption, keyed from the `API_KEY` env var. Only accessible to someone who already has API access.
 
 ```bash
-# Store credentials for a service
+# Store credentials for a target application
 curl -X POST http://localhost:8080/creds/store \
   -H "X-API-Key: <key>" \
   -H "Content-Type: application/json" \
-  -d '{"service": "linkedin", "username": "user@email.com", "password": "...", "totp_secret": "BASE32SECRET"}'
+  -d '{"service": "target-app", "username": "user@example.com", "password": "...", "totp_secret": "BASE32SECRET"}'
 
 # List stored services (never returns passwords)
 curl http://localhost:8080/creds/list -H "X-API-Key: <key>"
@@ -160,10 +160,10 @@ curl http://localhost:8080/creds/list -H "X-API-Key: <key>"
 curl -X POST http://localhost:8080/login \
   -H "X-API-Key: <key>" \
   -H "Content-Type: application/json" \
-  -d '{"service": "linkedin", "username_selector": "#username", "password_selector": "#password"}'
+  -d '{"service": "target-app", "username_selector": "#username", "password_selector": "#password"}'
 
 # Get current TOTP code
-curl http://localhost:8080/creds/totp/linkedin -H "X-API-Key: <key>"
+curl http://localhost:8080/creds/totp/target-app -H "X-API-Key: <key>"
 ```
 
 ---
