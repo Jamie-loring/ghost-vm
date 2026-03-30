@@ -1,0 +1,40 @@
+{
+  "browser": {
+    "has_seen_welcome_page": true,
+    "window_placement": {
+      "bottom": 1080,
+      "left": 0,
+      "maximized": true,
+      "right": 1920,
+      "top": 0,
+      "work_area_bottom": 1080,
+      "work_area_left": 0,
+      "work_area_right": 1920,
+      "work_area_top": 0
+    }
+  },
+  "profile": {
+    "content_settings": {},
+    "exit_type": "Normal",
+    "exited_cleanly": true,
+    "name": "Default"
+  },
+  "signin": {
+    "allowed": false
+  },
+  "autofill": {
+    "enabled": false
+  },
+  "credentials_enable_service": false,
+  "password_manager_enabled": false,
+  "privacy": {
+    "sanitize_on_exit_settings": {
+      "target": 2
+    }
+  },
+  "webkit": {
+    "webprefs": {
+      "javascript_enabled": true
+    }
+  }
+}
