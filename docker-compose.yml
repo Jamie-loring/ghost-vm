@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  browser-vm:
+    image: localhost/ghost-vm:latest
+    container_name: browser-vm
+    restart: unless-stopped
+    environment:
+      DISPLAY: ":1"
+      SCREEN_RESOLUTION: "1920x1080x24"
+      TZ: "America/New_York"
+      # Set VNC_PASSWORD to enable VNC auth, leave blank for no-auth (local use)
+      VNC_PASSWORD: ""
+    ports:
+      - "6080:6080"   # noVNC web UI  → http://localhost:6080/vnc.html
+      - "5900:5900"   # Raw VNC (any VNC client)
+      - "8080:8080"   # Automation REST API
+    volumes:
+      # Persist browser profile between restarts
+      - browser-profile:/home/user/.config/chromium
+      # Mount automation scripts for live editing without rebuild
+      - ./automation:/app
+    shm_size: "512m"   # Chromium needs shared memory
+    cap_add:
+      - SYS_ADMIN      # Required for Chromium sandbox inside container
+
+volumes:
+  browser-profile:
